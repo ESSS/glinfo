@@ -5,6 +5,7 @@
 #include <QtCore/QTextStream>
 
 #include <iostream>
+#include <fstream>
 #include <string>
 
 
@@ -50,8 +51,21 @@ int main(int argc, char ** argv)
 {
     QGuiApplication app(argc, argv);
     QString info_qstr = qtDiag();
-    
+
+    if (argc == 2 && std::string(argv[1]) == "-h")
+    {
+        std::cout << "Usage: glinfo [-f filename]" << std::endl;
+        return 0;
+    }
+
     std::wcout << info_qstr.toStdWString() << std::endl << std::flush;
 
-    return 0;    
+    if (argc == 3 && std::string(argv[1]) == "-f")
+    {
+        std::string filename = argv[2];
+        std::ofstream file(filename);
+        file << info_qstr.toStdString() << std::endl;
+    }
+
+    return 0;
 }
