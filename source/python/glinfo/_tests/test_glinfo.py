@@ -19,7 +19,7 @@ def test_glinfo():
         assert lines[3].startswith('Shading Language:')
     else:
         assert len(lines) == 1
-        assert lines[0] == 'ERROR: Unable to create an Open GL context.'
+        assert lines[0] == 'ERROR: Unable to create an OpenGL context.'
 
 
 def test_glinfo_file(tmpdir):
