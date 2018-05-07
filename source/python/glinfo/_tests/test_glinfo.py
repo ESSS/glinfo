@@ -11,11 +11,15 @@ def test_glinfo():
     output = subprocess.check_output('glinfo').decode('ascii')
     lines = output.split('\n')
 
-    assert len(lines) == 4
-    assert lines[0].startswith('LibGL Vendor:')
-    assert lines[1].startswith('Renderer:')
-    assert lines[2].startswith('Version:')
-    assert lines[3].startswith('Shading Language:')
+    # The output is either the complete GL info or a single line with an error message.
+    if len(lines) == 4:
+        assert lines[0].startswith('LibGL Vendor:')
+        assert lines[1].startswith('Renderer:')
+        assert lines[2].startswith('Version:')
+        assert lines[3].startswith('Shading Language:')
+    else:
+        assert len(lines) == 1
+        assert lines[0] == 'ERROR: Unable to create an Open GL context.'
 
 
 def test_glinfo_file(tmpdir):
