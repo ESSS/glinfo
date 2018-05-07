@@ -11,8 +11,11 @@ dependencies:
   - fix-and-check-env=1.0.0
   - qt5=5.5.1
   - pytest>=3.0.0
+  - esss_fix_format
 
 environment:
+  PYTHONPATH:
+    - {{ root }}/source/python
 
   {% if os.sys.platform != 'win32' %}
   LD_LIBRARY_PATH:

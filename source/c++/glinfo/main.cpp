@@ -31,7 +31,7 @@ void dumpGlInfo(QTextStream &str)
         str << " Vendor: " << reinterpret_cast<const char *>(functions.glGetString(GL_VENDOR))
             << "\nRenderer: " << reinterpret_cast<const char *>(functions.glGetString(GL_RENDERER))
             << "\nVersion: " << reinterpret_cast<const char *>(functions.glGetString(GL_VERSION))
-            << "\nShading language: " << reinterpret_cast<const char *>(functions.glGetString(GL_SHADING_LANGUAGE_VERSION));
+            << "\nShading Language: " << reinterpret_cast<const char *>(functions.glGetString(GL_SHADING_LANGUAGE_VERSION));
     }
     else
     {
@@ -58,13 +58,13 @@ int main(int argc, char ** argv)
         return 0;
     }
 
-    std::wcout << info_qstr.toStdWString() << std::endl << std::flush;
+    std::wcout << info_qstr.toStdWString() << std::flush;
 
     if (argc == 3 && std::string(argv[1]) == "-f")
     {
         std::string filename = argv[2];
         std::ofstream file(filename);
-        file << info_qstr.toStdString() << std::endl;
+        file << info_qstr.toStdString() << std::flush;
     }
 
     return 0;
