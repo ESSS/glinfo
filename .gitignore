@@ -8,3 +8,4 @@ dist
 *.pyc
 environment.yml
 *compile_environment*.yml
+artifacts-py*
