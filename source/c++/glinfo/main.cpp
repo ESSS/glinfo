@@ -35,7 +35,7 @@ void dumpGlInfo(QTextStream &str)
     }
     else
     {
-        str << "ERROR: Unable to create an Open GL context.";
+        str << "ERROR: Unable to create an OpenGL context.";
     }
 }
 
