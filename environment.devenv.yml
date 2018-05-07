@@ -10,14 +10,15 @@ includes:
 dependencies:
   - fix-and-check-env=1.0.0
   - qt5=5.5.1
+  - pytest>=3.0.0
 
 environment:
 
   {% if os.sys.platform != 'win32' %}
   LD_LIBRARY_PATH:
-    - {{ root }}/artifacts-py{{ CONDA_PY}}/libs
+    - {{ root }}/artifacts-py{{ CONDA_PY}}/exes
     - $CONDA_PREFIX/lib
   {% else %}
   PATH:
-    - {{ root }}\artifacts-py{{ CONDA_PY}}\libs
+    - {{ root }}\artifacts-py{{ CONDA_PY}}\exes
   {% endif %}
