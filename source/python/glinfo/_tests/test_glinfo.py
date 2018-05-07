@@ -1,13 +1,14 @@
 from __future__ import absolute_import, division, print_function, unicode_literals
 
 import subprocess
+import six
 
 
 def test_glinfo():
     '''
     Test that the output of `glinfo` has the expected format.
     '''
-    output = subprocess.check_output('glinfo')
+    output = subprocess.check_output('glinfo').decode('ascii')
     lines = output.split('\n')
 
     assert len(lines) == 4
@@ -25,6 +26,6 @@ def test_glinfo_file(tmpdir):
     filepath = tmpdir.join('output.txt')
     assert not filepath.check()
 
-    output = subprocess.check_output(['glinfo', '-f', unicode(filepath)], universal_newlines=True)
+    output = subprocess.check_output(['glinfo', '-f', six.text_type(filepath)], universal_newlines=True)
     assert filepath.check()
     assert output == filepath.read_text('utf-8')
