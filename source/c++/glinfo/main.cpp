@@ -62,8 +62,7 @@ int main(int argc, char ** argv)
 
     if (argc == 3 && std::string(argv[1]) == "-f")
     {
-        std::string filename = argv[2];
-        std::ofstream file(filename);
+        std::ofstream file(argv[2]);
         file << info_qstr.toStdString() << std::flush;
     }
 
