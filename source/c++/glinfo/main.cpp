@@ -49,6 +49,7 @@ QString qtDiag()
 
 int main(int argc, char ** argv)
 {
+    QGuiApplication::setAttribute(Qt::AA_UseDesktopOpenGL);
     QGuiApplication app(argc, argv);
     QString info_qstr = qtDiag();
 
