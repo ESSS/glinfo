@@ -1,2 +1,4 @@
 caption: 'glinfo'
 buildable_platforms: [win64, linux64]
+test_py_commands: ['{pytest} -v --capture=no']
+test_py_addopts: ''

@@ -1,0 +1,32 @@
+{% set CONDA_PY = os.environ.get('CONDA_PY', '27') %}
+{% set PY2 = CONDA_PY < '35' %}
+{% set PY3 = not PY2 %}
+name: glinfo-py{{ CONDA_PY }}
+
+includes:
+  - {{ root }}/../eden/environment.devenv.yml
+  - {{ root }}/../eden/compilation_environment.devenv.yml
+
+dependencies:
+  - fix-and-check-env=1.0.0
+  {% if PY2 %}
+  - qt5=5.5.1
+  {% else %}
+  - qt=5.6.2
+  {% endif %}
+  - pytest>=3.0.0
+  - esss_fix_format
+  - six
+
+environment:
+  PYTHONPATH:
+    - {{ root }}/source/python
+
+  {% if os.sys.platform != 'win32' %}
+  LD_LIBRARY_PATH:
+    - {{ root }}/artifacts-py{{ CONDA_PY}}/exes
+    - $CONDA_PREFIX/lib
+  {% else %}
+  PATH:
+    - {{ root }}\artifacts-py{{ CONDA_PY}}\exes
+  {% endif %}

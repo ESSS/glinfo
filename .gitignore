@@ -1,0 +1,11 @@
+__pycache__
+.cache
+.DS_Store
+.tox
+build
+dist
+*.egg-info
+*.pyc
+environment.yml
+*compile_environment*.yml
+artifacts-py*
