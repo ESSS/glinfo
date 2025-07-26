@@ -1,6 +1,9 @@
 glinfo
 ======
 
+> [!IMPORTANT]
+> This repository is no longer maintained, replaced by [ESSS/glinfo-rs](https://github.com/ESSS/glinfo-rs)
+
 `glinfo` is a small utility to assess the OpenGL capabilities of the current environment. When called without parameters, the command will create a hidden OpenGL context using Qt and write to standard output contents similar to:
 
 ```
